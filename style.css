@@ -16,21 +16,61 @@
   --shadow-hover: 0 2px 8px rgba(0,0,0,0.10), 0 8px 24px rgba(0,0,0,0.08);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #141414;
-    --surface: #1f1f1f;
-    --border: rgba(255,255,255,0.08);
-    --border-hover: rgba(255,255,255,0.18);
-    --text-primary: #f0efec;
-    --text-secondary: #a0a0a0;
-    --text-muted: #666;
-    --accent: #5b9cf6;
-    --accent-light: #1a2a3d;
-    --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.2);
-    --shadow-hover: 0 2px 8px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.3);
-  }
+/* Dark mode */
+html.dark {
+  --bg: #141414;
+  --surface: #1f1f1f;
+  --border: rgba(255,255,255,0.08);
+  --border-hover: rgba(255,255,255,0.18);
+  --text-primary: #f0efec;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666;
+  --accent: #5b9cf6;
+  --accent-light: #1a2a3d;
+  --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.2);
+  --shadow-hover: 0 2px 8px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.3);
 }
+
+/* Toggle de tema */
+.theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.15s;
+}
+
+.theme-toggle:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-hover);
+  transform: scale(1.08);
+}
+
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+/* Light mode */
+.theme-toggle .icon-moon { opacity: 1; transform: scale(1); }
+.theme-toggle .icon-sun  { opacity: 0; transform: scale(0.6); }
+
+/* Dark mode */
+html.dark .theme-toggle .icon-moon { opacity: 0; transform: scale(0.6); }
+html.dark .theme-toggle .icon-sun  { opacity: 1; transform: scale(1); }
 
 html, body {
   min-height: 100%;
